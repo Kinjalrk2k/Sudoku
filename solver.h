@@ -1,4 +1,7 @@
+#ifndef SOLVER
+#define SOLVER
 #include "headers.h"
+#include "grid.h"
 
 // This function finds an entry in grid that is still unassigned
 bool FindUnassignedLocation(int grid[N][N], int &row, int &col);
@@ -11,6 +14,7 @@ bool isSafe(int grid[N][N], int row, int col, int num);
   for Sudoku solution (non-duplication across rows, columns, and boxes) */
 bool SolveSudoku(int grid[N][N])
 {
+    //printGrid_prob(grid);
     int row, col;
 
     // If there is no unassigned location, we are done
@@ -92,3 +96,4 @@ bool isSafe(int grid[N][N], int row, int col, int num)
            !UsedInBox(grid, row - row%3 , col - col%3, num);
 }
 
+#endif

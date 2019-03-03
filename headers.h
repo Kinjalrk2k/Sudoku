@@ -10,6 +10,7 @@
 #include <ctime>
 #include <conio.h>
 #include <tuple>
+#include <time.h>
 
 using namespace std;
 

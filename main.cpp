@@ -4,12 +4,14 @@
 int main(int argc, char const *argv[])
 {
     int px = 0, py = 0;
+    double time;
+    clock_t tStart, tStop;
 
-    int prob[N][N] = {{3, 0, 6, 5, 0, 8, 4, 0, 0},
+    int prob[N][N] = {{0, 0, 6, 5, 0, 8, 4, 0, 0},
                       {5, 2, 0, 0, 0, 0, 0, 0, 0},
-                      {0, 8, 7, 0, 0, 0, 0, 3, 1},
+                      {0, 8, 7, 0, 0, 0, 0, 0, 1},
                       {0, 0, 3, 0, 1, 0, 0, 8, 0},
-                      {9, 0, 0, 8, 6, 3, 0, 0, 5},
+                      {9, 0, 0, 8, 0, 3, 0, 0, 5},
                       {0, 5, 0, 0, 9, 0, 6, 0, 0},
                       {1, 3, 0, 0, 0, 0, 2, 5, 0},
                       {0, 0, 0, 0, 0, 0, 0, 7, 4},
@@ -23,9 +25,14 @@ int main(int argc, char const *argv[])
     printGrid_prob(prob);
 
     copyGrid(prob, soln);
+
+    tStart = clock();
     SolveSudoku(soln);
+    tStop = clock();    
 
     printGrid_all(prob, soln, px+38, py);
+    time = ((tStop - tStart)/(double)CLOCKS_PER_SEC)*1000;
+    cout<<"Time Elapsed: "<<time<<"ms";
 
     /**/
 
@@ -36,11 +43,17 @@ int main(int argc, char const *argv[])
     printGrid_prob(prob2);
 
     copyGrid(prob2, soln);
+    
+    tStart = clock();
     SolveSudoku(soln);
+    tStop = clock();    
 
-    printGrid_all(prob2, soln, px+38, py);
+    printGrid_all(prob, soln, px+38, py);
+    time = ((tStop - tStart)/(double)CLOCKS_PER_SEC)*1000;
+    cout<<"Time Elapsed: "<<time<<"ms";
 
     /**/
 
+    cout<<endl;
     return 0;
 }

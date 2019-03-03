@@ -1,3 +1,5 @@
+#ifndef GRID
+#define GRID
 #include "headers.h"
 
 void copyGrid(int grid1[N][N], int grid2[N][N])
@@ -139,3 +141,5 @@ void printGrid_all(int grid_prob[N][N], int grid_soln[N][N], int x=-1, int y=-1)
 
     SetConsoleTextAttribute(hConsole,FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 }
+
+#endif
